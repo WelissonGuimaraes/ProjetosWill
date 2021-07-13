@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ NewsFP.name }} | News Letters For People</title>
+
+</head>
+
+<body>
+    <div id="page-NewsFP">
+        <aside class="animate-right sidebar">
+            <img src="/images" alt="NewsFP">
+
+            <footer>
+                <button onclick="history.back()">
+                    <img src="/images" alt="voltar">
+                </button>
+            </footer>
+
+        </aside>
+
+
+        <main class="animate-appear with-sidebar">
+            <div class="NewsFP-details">
+                <img src="{{NewsFP.fistImage}}" alt="{{NewsFP.name}}">
+
+                <div class="images">
+                    {{#each NewsFP.images }}
+                    <button onclick="selectImage(event)" class="active" type="button">
+                        <img src="{{this}}" alt="{{NewsFP.name}}">
+                    </button>
+                    {{/each}}
+
+                </div>
+                <div class="NewsFP-details-content">
+                    <h1>{{NewsFP.name}}</h1>
+
+                    <p>
+
+                        {{NewsFP.about}}
+                    </p>
+                    <hr>
+                    <h2>Visualiza Noticias</h2>
+                    <p> {{NewsFP.News}}</p>
+                    </p>
+
+                    <div class="news-details">
+                        <div class="Info">
+                            <img src="/images" alt="Ocorrencias">
+                            {{NewsFP.News}}
+                        </div>
+                        {{#if NewsFP.numero}}
+                        <div class="numero" >
+                            <img src="/images" alt="Informações">
+                            Noticia 1
+                        </div>
+                        {{else}}
+                        <div class="numero alt">
+                            <img src="/images" alt="informações">
+                            Noticia 2
+                        </div>
+                        {{/if}}
+                    </div>
+
+                    <a href="https://api.whatsapp.com/send?l=pt_BR&phone={{NewsFP.whatsapp}}&text=Olá, já soube das novidades? Acompanhe pelo WPP {{NewsFP.name}}"
+                        target="_blank" class="primary-button" type="button">
+                        <img src="/images/whatsapp.svg" alt="Chamar no Whatsapp" />
+                        Receber as News For people
+                    </a>
+
+
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="/js/page-NewsFP.js"></script>
+</body>
+
+</html>

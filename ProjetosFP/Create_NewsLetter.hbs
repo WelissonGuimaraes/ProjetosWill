@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar News | Letters</title>
+
+
+</head>
+
+<body>
+    <div id="Page-Create-FPNews">
+        <aside class="animate-right sidebar">
+            <img src="/images" alt="FP">
+
+            <footer>
+                <button onclick="history.back()">
+                    <img src="/images" alt="voltar">
+                </button>
+            </footer>
+
+        </aside>
+
+
+        <main class="animate-appear with-sidebar">
+            <form action="FP-News" method="post" onsubmit="validate(event)">
+                <fieldset>
+                    <legend>Dados</legend>
+
+                    <div class="Cadnews">
+                        <div id="mapid"></div>
+                        <input type="hidden" name="news" />
+                        <footer>
+                            <a href="#" id="select-point">
+                                Envio de noticias
+                            </a>
+                        </footer>
+                    </div>
+                    <div class="input-block">
+                        <label for="name">Nome</label>
+                        <input id="name" name="name" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="email">Email</label>
+                        <input id="email" name="emial" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="whatsapp">Whatsapp</label>
+                        <input id="whatsapp" name="whatsapp" required>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <div class="input-block">
+                        <label for="News">News</label>
+                        <textarea id="News" name="News" required></textarea>
+                    </div>
+                    <div class="input-block">
+                        <label for="opening_hours">Email 2</label>
+                        <input id="opening_hours" name="opening_hours" required>
+                    </div>
+                </fieldset>
+
+            </form>
+
+        </main>
+    </div>
+
+    <script src="/js/page-create-News.js"></script>
+</body>
+
+</html>
