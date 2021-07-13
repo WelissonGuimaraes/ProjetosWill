@@ -5,17 +5,16 @@ const Database = require('sqlite-async');
 function execute(db) {
 
     return db.exec(`
-        CREATE TABLE IF NOT EXISTS orphanages (
+        CREATE TABLE IF NOT EXISTS FP_News (
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
-            lat TEXT,
-            lng TEXT,
+            News TEXT,
+            email TEXT,
             name TEXT,
             about TEXT,
             whatsapp TEXT,
             images TEXT,
             instructions TEXT,
-            opening_hours TEXT,
-            open_on_weekends TEXT
+            numero TEXT
         );
     `);
 

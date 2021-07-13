@@ -1,5 +1,5 @@
 const Database = require('./database/db');
-const saveOrphanage = require('./database/saveOrphanage')
+const FPNews = require('./database/FP_News')
 
 module.exports = {
 
@@ -8,47 +8,47 @@ module.exports = {
         return res.render('index')
     },
 
-    async orphanage(req, res) {
+    async FP_News(req, res) {
         const id = req.query.id;
 
 
         try {
             const db = await Database;
-            const results = await db.all(`SELECT * FROM orphanages WHERE id = "${id}"`);
+            const results = await db.all(`SELECT * FROM FP_News WHERE id = "${id}"`);
 
-            const orphanage = results[0];
+            const NewsFP = results[0];
 
 
-            orphanage.images = orphanage.images.split(",")
-            orphanage.fistImage = orphanage.images[0]
+            NewsFP.images = NewsFP.images.split(",")
+            NewsFP.fistImage = NewsFP.images[0]
 
-            if (orphanage.open_on_weekends == "0") {
-                orphanage.open_on_weekends = false;
+            if (NewsFP.numero == "0") {
+                NewsFP.News = false;
             } else {
-                orphanage.open_on_weekends = true;
+                NewsFP.News = true;
             }
 
-            return res.render('orphanage', { orphanage })
+            return res.render('NewsFP', { NewsFP })
         } catch (error) {
             console.log(error);
             return res.send('Erro no banco de dados!')
         }
     },
-    async orphanages(req, res) {
+    async NewsFPs(req, res) {
         try {
             const db = await Database;
-            const orphanages = await db.all("SELECT * FROM orphanages")
-            return res.render('orphanages', { orphanages });
+            const NewsFPs = await db.all("SELECT * FROM NewsFPs")
+            return res.render('NewsFPs', { NewsFPs });
         } catch (error) {
             console.log(error);
             return res.send('erro no banco de dados');
         }
     },
-    createOrphanage(req, res) {
-        return res.render('create-orphanage');
+    createNewsFP(req, res) {
+        return res.render('create-NewsFP');
     },
 
-    async saveOrphanage(req, res) {
+    async saveNewsFP(req, res) {
 
         const fields = req.body;
 
@@ -59,20 +59,17 @@ module.exports = {
 
         try {
             const db = await Database;
-            await saveOrphanage(db, {
-                lat: fields.lat,
-                lng: fields.lng,
+            await saveNewsFP(db, {
                 name: fields.name,
                 about: fields.about,
                 whatsapp: fields.whatsapp,
                 images: fields.images.toString(),
                 instructions: fields.instructions,
-                opening_hours: fields.opening_hours,
-                open_on_weekends: fields.open_on_weekends,
-
+                email: fields.email,
+                News: fields.News
             });
             //redirecionamento 
-            return res.redirect('/orphanages');
+            return res.redirect('/NewsFPs');
 
         } catch (error) {
             console.log(error);
